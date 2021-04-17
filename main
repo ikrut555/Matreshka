@@ -1,1 +1,57 @@
+import turtle
+import math
+n=int(input("Введите количество матрешек (от 1 до 6): ")) 
+if n>6 or n<1:
+    while n>6 or n<1:
+        n=int(input("Неверное количество.Введите количество матрешек (от 1 до 6): ")) 
+def oval(a,b,fill=''):
+
+    dx=turtle.xcor()
+    dy=turtle.ycor()
+    turtle.color(fill)
+    turtle.begin_fill()
+    for deg in range(361):
+        rad=math.radians(deg)
+        x=a*math.sin(rad)+dx
+        y=-b*math.cos(rad)+b+dy
+        turtle.goto(x,y)
+    turtle.end_fill()
+def draw(n):
+    turtle.speed(100)
+    if n==0:
+        return
+    turtle.up()
+    turtle.goto(500-150*n,-200)
+    turtle.down()
+    oval(13*n,5*n,"green")
+    turtle.up()
+    turtle.left(90)
+    turtle.forward(8*n)
+    turtle.down()
+    oval(13*n,20*n,"yellow")
+    turtle.up()
+    turtle.forward(30*n)
+    turtle.down()
+    oval(10*n,10*n,"red")
+    turtle.up()
+    turtle.forward(10*n)
+    turtle.left(90)
+    turtle.forward(5*n)
+    turtle.left(180)
+    turtle.down()
+    oval(3*n,3*n,"white")
+    turtle.up()
+    turtle.forward(10*n)
+    turtle.down()
+    oval(3*n,3*n,"white")
+    turtle.up()
+    turtle.left(180)
+    turtle.forward(5*n)
+    turtle.left(90)
+    turtle.forward(7*n)
+    turtle.left(90)
+    turtle.down()
+    oval(5*n,2*n,"yellow")
+    return draw(n-1)
+draw(n)
 
